@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayfair 2026 Signage Refresh — Facility Intake Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #7B2D8B;
+    --purple-dark: #5A1E67;
+    --purple-light: #9B45AC;
+    --purple-pale: #F3E8F7;
+    --teal: #00A591;
+    --teal-light: #E0F5F3;
+    --white: #FFFFFF;
+    --off-white: #FAFAF8;
+    --warm-gray: #F5F2EF;
+    --border: #E5E0EA;
+    --mid-gray: #8A8A8A;
+    --dark: #1C1C2E;
+    --text: #2C2230;
+    --error: #D93025;
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  html, body {
+    min-height: 100vh;
+    background: var(--off-white);
+    color: var(--text);
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--dark);
+    padding: 0 48px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .header-brand .wayfair-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .header-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.2);
+  }
+  .header-brand .form-title {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .header-logo img {
+    height: 32px;
+    background: white;
+    padding: 4px 12px;
+    border-radius: 5px;
+  }
+
+  /* ── Progress bar ── */
+  .progress-bar {
+    height: 4px;
+    background: var(--purple-pale);
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--purple);
+    transition: width 0.4s ease;
+  }
+
+  /* ── Hero banner ── */
+  .form-hero {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 100%);
+    padding: 56px 48px 52px;
+    color: white;
+  }
+  .form-hero .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+  .form-hero h1 {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .form-hero p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+  .hero-steps {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .hero-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+  .hero-step .step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+  .hero-step.active .step-circle {
+    background: var(--teal);
+  }
+  .hero-step .step-label { font-weight: 600; }
+
+  /* ── Main layout ── */
+  .form-main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 24px 100px;
+  }
+
+  /* ── Section groups ── */
+  .form-section {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 28px 36px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--purple-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-icon svg { width: 22px; height: 22px; }
+  .section-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--mid-gray);
+    margin-top: 3px;
+  }
+  .section-body {
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ── Field styles ── */
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .field-row.three { grid-template-columns: 1fr 1fr 1fr; }
+  .field-row.full { grid-template-columns: 1fr; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .field label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .field label .req {
+    color: var(--purple);
+    font-size: 15px;
+    line-height: 1;
+  }
+  .field label .hint {
+    color: var(--mid-gray);
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: auto;
+  }
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--off-white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238A8A8A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+  .field textarea { resize: vertical; min-height: 100px; }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--purple);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(123,45,139,0.1);
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #B8B0BE;
+  }
+  .field-note {
+    font-size: 12px;
+    color: var(--mid-gray);
+    line-height: 1.4;
+  }
+
+  /* ── Sign categories table ── */
+  .sign-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .sign-table thead th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mid-gray);
+    padding: 0 16px 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sign-table thead th:last-child,
+  .sign-table thead th:nth-child(3) { text-align: center; }
+  .sign-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  .sign-table tbody tr:last-child { border-bottom: none; }
+  .sign-table tbody tr:hover { background: var(--off-white); }
+  .sign-table td {
+    padding: 16px 16px;
+    font-size: 15px;
+    vertical-align: middle;
+  }
+  .cat-name-cell {
+    font-weight: 700;
+    color: var(--text);
+  }
+  .cat-desc-cell {
+    font-size: 13px;
+    color: var(--mid-gray);
+    line-height: 1.4;
+  }
+  .required-badge {
+    display: inline-block;
+    background: var(--purple-pale);
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .optional-badge {
+    display: inline-block;
+    background: var(--warm-gray);
+    color: var(--mid-gray);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .check-cell { text-align: center; }
+  .sign-table input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--purple);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .qty-input {
+    width: 80px !important;
+    text-align: center;
+    font-weight: 700;
+    padding: 8px 10px !important;
+    font-size: 14px !important;
+  }
+
+  /* ── Checkbox groups ── */
+  .check-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--purple-light); background: var(--purple-pale); }
+  .check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--purple);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .check-item.checked {
+    border-color: var(--purple);
+    background: var(--purple-pale);
+  }
+  .check-item span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  /* ── Range slider ── */
+  .range-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--mid-gray);
+  }
+  input[type="range"] {
+    width: 100%;
+    height: 6px;
+    accent-color: var(--purple);
+    cursor: pointer;
+  }
+  .range-value {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--purple);
+  }
+
+  /* ── Submit section ── */
+  .submit-section {
+    background: var(--dark);
+    border-radius: 16px;
+    padding: 40px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .submit-info h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .submit-info p {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .submit-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .btn-save {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.7);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-save:hover {
+    border-color: rgba(255,255,255,0.5);
+    color: white;
+  }
+  .btn-submit {
+    background: var(--teal);
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 14px 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-submit:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit svg { width: 18px; height: 18px; }
+
+  /* ── Success overlay ── */
+  .success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,28,46,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .success-overlay.show { display: flex; }
+  .success-card {
+    background: white;
+    border-radius: 20px;
+    padding: 56px 64px;
+    max-width: 520px;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .success-icon svg { width: 36px; height: 36px; color: var(--teal); }
+  .success-card h2 {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .success-card p {
+    font-size: 16px;
+    color: var(--mid-gray);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .success-card .ref-num {
+    background: var(--warm-gray);
+    border-radius: 10px;
+    padding: 16px 24px;
+    font-size: 14px;
+    color: var(--mid-gray);
+    margin-bottom: 28px;
+  }
+  .success-card .ref-num strong {
+    color: var(--purple);
+    font-size: 18px;
+    display: block;
+    margin-top: 4px;
+  }
+  .btn-done {
+    background: var(--purple);
+    border: none;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 14px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .btn-done:hover { background: var(--purple-dark); }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-brand">
+    <div class="wayfair-name">Wayfair</div>
+    <div class="header-divider"></div>
+    <div class="form-title">2026 Signage Refresh — Facility Intake</div>
+  </div>
+  <div class="header-logo">
+    <img src="uploads/fastsigns_logo-1776604457773.jpg" alt="FASTSIGNS">
+  </div>
+</header>
+
+<!-- Progress -->
+<div class="progress-bar">
+  <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+</div>
+
+<!-- Hero -->
+<div class="form-hero">
+  <div class="eyebrow">Facility Signage Intake</div>
+  <h1>2026 Signage Refresh<br>Facility Assessment</h1>
+  <p>Complete this form to help FASTSIGNS prepare your location's custom signage package. Estimated time: 8–10 minutes.</p>
+  <div class="hero-steps">
+    <div class="hero-step active">
+      <div class="step-circle">1</div>
+      <div class="step-label">Facility Info</div>
+    </div>
+    <div class="hero-step">
+      <div class="step-circle">2</div>
+      <div class="step-label">Contact Details</div>
+    </div>
+    <div class="hero-step">
+      <div class="step-circle">3</div>
+      <div class="step-label">Sign Selection</div>
+    </div>
+    <div class="hero-step">
+      <div class="step-circle">4</div>
+      <div class="step-label">Notes & Submit</div>
+    </div>
+  </div>
+</div>
+
+<!-- Form -->
+<main class="form-main">
+  <form id="intakeForm" novalidate>
+
+    <!-- Section 1: Facility Info -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <div>
+          <div class="section-title">Facility Information</div>
+          <div class="section-subtitle">Tell us about your warehouse location</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Facility Name <span class="req">*</span></label>
+            <input type="text" name="facilityName" placeholder="e.g. Wayfair — Atlanta DC" required>
+          </div>
+          <div class="field">
+            <label>Facility Code / ID <span class="hint">if applicable</span></label>
+            <input type="text" name="facilityCode" placeholder="e.g. ATL-01">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Street Address <span class="req">*</span></label>
+            <input type="text" name="address" placeholder="123 Warehouse Drive" required>
+          </div>
+          <div class="field">
+            <label>City <span class="req">*</span></label>
+            <input type="text" name="city" placeholder="Atlanta" required>
+          </div>
+        </div>
+        <div class="field-row three">
+          <div class="field">
+            <label>State <span class="req">*</span></label>
+            <select name="state" required>
+              <option value="">Select state…</option>
+              <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+              <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+              <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+              <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+              <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+              <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+              <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+              <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+              <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+              <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+              <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+              <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+              <option>WI</option><option>WY</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>ZIP Code <span class="req">*</span></label>
+            <input type="text" name="zip" placeholder="30301" pattern="[0-9]{5}" required>
+          </div>
+          <div class="field">
+            <label>Facility Type <span class="req">*</span></label>
+            <select name="facilityType" required>
+              <option value="">Select type…</option>
+              <option>Distribution Center (DC)</option>
+              <option>Home Delivery Outlet (HDO)</option>
+              <option>Customer Pickup Location</option>
+              <option>Storage / Overflow</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Approximate Square Footage <span class="req">*</span></label>
+            <select name="sqft" required>
+              <option value="">Select range…</option>
+              <option>Under 50,000 sq ft</option>
+              <option>50,000 – 100,000 sq ft</option>
+              <option>100,000 – 250,000 sq ft</option>
+              <option>250,000 – 500,000 sq ft</option>
+              <option>500,000 – 1,000,000 sq ft</option>
+              <option>Over 1,000,000 sq ft</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Number of Associates (approx.)</label>
+            <select name="associates">
+              <option value="">Select range…</option>
+              <option>Under 50</option>
+              <option>50 – 150</option>
+              <option>150 – 500</option>
+              <option>500 – 1,000</option>
+              <option>Over 1,000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Contact Info -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="section-title">Primary Contact</div>
+          <div class="section-subtitle">Who should FASTSIGNS reach for questions about this order?</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" name="firstName" placeholder="Jane" required>
+          </div>
+          <div class="field">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" name="lastName" placeholder="Smith" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Job Title / Role</label>
+            <input type="text" name="role" placeholder="Facility Manager">
+          </div>
+          <div class="field">
+            <label>Wayfair Email <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="jsmith@wayfair.com" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="(555) 000-0000">
+          </div>
+          <div class="field">
+            <label>Preferred Contact Method</label>
+            <select name="contactMethod">
+              <option>Email</option>
+              <option>Phone</option>
+              <option>Either</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Sign Categories -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="section-title">Signage Categories</div>
+          <div class="section-subtitle">Select the categories needed and enter estimated quantities where known</div>
+        </div>
+      </div>
+      <div class="section-body" style="padding:0">
+        <table class="sign-table">
+          <thead>
+            <tr>
+              <th style="width:200px">Category</th>
+              <th>Description</th>
+              <th style="width:120px">Status</th>
+              <th style="width:80px">Include</th>
+              <th style="width:100px">Est. Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-name-cell">2026 Signage Refresh</td>
+              <td class="cat-desc-cell">Core brand refresh package — required for all facilities. Updated logos, brand marks, and primary signage.</td>
+              <td><span class="required-badge">Required</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_refresh" checked disabled></td>
+              <td><input type="number" class="qty-input" name="qty_refresh" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none"></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Safety Signs</td>
+              <td class="cat-desc-cell">Compliance-required safety signage — OSHA and regulatory standards. Recommended for all locations.</td>
+              <td><span class="required-badge">Required</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_safety" checked disabled></td>
+              <td><input type="number" class="qty-input" name="qty_safety" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none"></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Engagement</td>
+              <td class="cat-desc-cell">Associate culture, motivation, and values signage for break rooms, entrances, and high-traffic areas.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_engagement" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_engagement" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Deluxing</td>
+              <td class="cat-desc-cell">Signage supporting the deluxing workflow and process areas within the facility.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_deluxing" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_deluxing" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Quality Signs</td>
+              <td class="cat-desc-cell">Quality control and inspection area signage for QA zones and product handling areas.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_quality" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_quality" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Waycademy Signs</td>
+              <td class="cat-desc-cell">Training and Waycademy program signage for learning areas and onboarding zones.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_waycademy" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_waycademy" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">HDO Standard Signs</td>
+              <td class="cat-desc-cell">Standard sign package for Home Delivery Outlet facilities. Includes all core HDO-specific signage.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_hdo" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_hdo" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Physical Retail – SRB</td>
+              <td class="cat-desc-cell">Signage for Storefront and Retail Branded (SRB) locations with customer-facing spaces.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_srb" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_srb" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Operations</td>
+              <td class="cat-desc-cell">Operational process and workflow signage for dock doors, staging areas, and logistics zones.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_ops" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_ops" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Parking Lot Signs</td>
+              <td class="cat-desc-cell">Exterior parking, traffic flow, and associate/visitor parking identification signs.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_parking" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_parking" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Security</td>
+              <td class="cat-desc-cell">Access control, restricted area, and security signage throughout the facility.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_security" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_security" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+            <tr>
+              <td class="cat-name-cell">Trailer Yard Signs</td>
+              <td class="cat-desc-cell">Trailer yard, dock door numbering, and yard management signage for the exterior facility grounds.</td>
+              <td><span class="optional-badge">Optional</span></td>
+              <td class="check-cell"><input type="checkbox" name="cat_trailer" class="cat-check"></td>
+              <td><input type="number" class="qty-input" name="qty_trailer" placeholder="—" min="1" style="width:80px;text-align:center;font-weight:700;padding:8px 10px;font-size:14px;border:1.5px solid var(--border);border-radius:8px;background:var(--off-white);font-family:inherit;outline:none" disabled></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="padding:20px 36px;background:var(--off-white);border-top:1px solid var(--border)">
+          <p style="font-size:13px;color:var(--mid-gray);line-height:1.5">
+            <strong style="color:var(--purple)">Not sure of quantities?</strong> Leave blank — a FASTSIGNS representative will follow up to help estimate based on your facility size and layout. Required categories are pre-selected and cannot be deselected.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 4: Installation -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M12 2v2M12 20v2M4.93 4.93l1.41 1.41M18.66 18.66l1.41 1.41M2 12h2M20 12h2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="section-title">Installation & Timeline</div>
+          <div class="section-subtitle">Help us plan production and delivery</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field-row">
+          <div class="field">
+            <label>Installation Support Needed?</label>
+            <select name="installation">
+              <option value="">Select…</option>
+              <option>Yes — please include installation</option>
+              <option>No — we will install in-house</option>
+              <option>Unsure — would like a quote</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Target Completion Date</label>
+            <input type="date" name="targetDate">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Preferred Delivery Window</label>
+            <select name="deliveryWindow">
+              <option value="">Select…</option>
+              <option>ASAP (Rush — additional fees may apply)</option>
+              <option>Within 4 weeks</option>
+              <option>4 – 8 weeks</option>
+              <option>8 – 12 weeks</option>
+              <option>Flexible — no hard deadline</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Receiving Hours</label>
+            <input type="text" name="receivingHours" placeholder="e.g. Mon–Fri, 7am–4pm">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 5: Notes -->
+    <div class="form-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="section-title">Special Instructions & Notes</div>
+          <div class="section-subtitle">Anything else FASTSIGNS should know about your facility or this order</div>
+        </div>
+      </div>
+      <div class="section-body">
+        <div class="field field-row full">
+          <div class="field">
+            <label>Special Instructions</label>
+            <textarea name="notes" placeholder="e.g. Loading dock access only, specific mounting requirements, existing signage to be retained, custom dimensions needed…" style="min-height:140px"></textarea>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>How did you hear about this program?</label>
+            <select name="referral">
+              <option value="">Select…</option>
+              <option>Wayfair Corporate Communication</option>
+              <option>Facility Manager Network</option>
+              <option>FASTSIGNS Representative</option>
+              <option>Email / Newsletter</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Ordering Portal Account</label>
+            <select name="hasAccount">
+              <option value="">Select…</option>
+              <option>Yes — I have an account</option>
+              <option>No — I need to create one</option>
+              <option>I need help with this</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-section">
+      <div class="submit-info">
+        <h3>Ready to submit?</h3>
+        <p>A FASTSIGNS representative will review your intake and follow up within 2 business days to confirm your package and next steps.</p>
+      </div>
+      <div class="submit-actions">
+        <button type="button" class="btn-save" onclick="saveDraft()">Save Draft</button>
+        <button type="submit" class="btn-submit">
+          Submit Intake Form
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </form>
+</main>
+
+<!-- Success Overlay -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2>Intake Submitted!</h2>
+    <p>Thank you. A FASTSIGNS representative will review your submission and contact you within 2 business days to finalize your signage package.</p>
+    <div class="ref-num">
+      Reference Number
+      <strong id="refNum">WF-2026-00000</strong>
+    </div>
+    <button class="btn-done" onclick="closeSuccess()">Done</button>
+  </div>
+</div>
+
+<script>
+  // Progress bar
+  const form = document.getElementById('intakeForm');
+  const progressFill = document.getElementById('progressFill');
+
+  function updateProgress() {
+    const required = form.querySelectorAll('[required]');
+    let filled = 0;
+    required.forEach(el => {
+      if (el.value && el.value.trim()) filled++;
+    });
+    const pct = Math.round((filled / required.length) * 100);
+    progressFill.style.width = pct + '%';
+  }
+
+  form.addEventListener('input', updateProgress);
+  form.addEventListener('change', updateProgress);
+
+  // Enable qty fields when optional categories are checked
+  document.querySelectorAll('.cat-check').forEach(cb => {
+    cb.addEventListener('change', function() {
+      const name = this.name.replace('cat_', 'qty_');
+      const qtyInput = form.querySelector(`[name="${name}"]`);
+      if (qtyInput) {
+        qtyInput.disabled = !this.checked;
+        if (!this.checked) qtyInput.value = '';
+      }
+    });
+  });
+
+  // Check items visual state
+  document.querySelectorAll('.check-item').forEach(item => {
+    const cb = item.querySelector('input[type="checkbox"]');
+    if (cb) {
+      cb.addEventListener('change', () => {
+        item.classList.toggle('checked', cb.checked);
+      });
+    }
+  });
+
+  // Save draft
+  function saveDraft() {
+    const data = new FormData(form);
+    const obj = {};
+    data.forEach((v, k) => obj[k] = v);
+    localStorage.setItem('wayfair_intake_draft', JSON.stringify(obj));
+    const btn = document.querySelector('.btn-save');
+    btn.textContent = '✓ Draft Saved';
+    setTimeout(() => btn.textContent = 'Save Draft', 2000);
+  }
+
+  // Restore draft
+  const draft = localStorage.getItem('wayfair_intake_draft');
+  if (draft) {
+    try {
+      const obj = JSON.parse(draft);
+      Object.entries(obj).forEach(([k, v]) => {
+        const el = form.querySelector(`[name="${k}"]`);
+        if (el) el.value = v;
+      });
+      updateProgress();
+    } catch(e) {}
+  }
+
+  // Submit
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const ref = 'WF-2026-' + String(Math.floor(Math.random() * 90000) + 10000);
+    document.getElementById('refNum').textContent = ref;
+    document.getElementById('successOverlay').classList.add('show');
+    localStorage.removeItem('wayfair_intake_draft');
+  });
+
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('show');
+    form.reset();
+    updateProgress();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wayfair 2026 Signage Refresh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="deck-stage.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #7B2D8B;
+    --purple-dark: #5A1E67;
+    --purple-light: #9B45AC;
+    --purple-pale: #F3E8F7;
+    --teal: #00A591;
+    --teal-dark: #007A6B;
+    --white: #FFFFFF;
+    --off-white: #FAFAF8;
+    --warm-gray: #F5F2EF;
+    --mid-gray: #8A8A8A;
+    --dark: #1C1C2E;
+    --text: #2C2230;
+
+    --title: 72px;
+    --subtitle: 48px;
+    --body: 36px;
+    --small: 28px;
+    --label: 22px;
+
+    --pad-x: 100px;
+    --pad-y: 90px;
+
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* ── Shared slide base ── */
+  section {
+    background: var(--white);
+    color: var(--text);
+  }
+
+  /* ── SLIDE 1: Title ── */
+  .s-title {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-title .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .s-title .fastsigns-badge {
+    background: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+  }
+  .s-title .fastsigns-badge img {
+    height: 44px;
+    width: auto;
+  }
+  .s-title .wayfair-wordmark {
+    color: var(--purple-light);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .s-title .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0 40px;
+  }
+  .s-title .eyebrow {
+    color: var(--teal);
+    font-size: var(--label);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .s-title h1 {
+    color: white;
+    font-size: 88px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 36px;
+    max-width: 900px;
+  }
+  .s-title .subtitle {
+    color: rgba(255,255,255,0.65);
+    font-size: var(--subtitle);
+    font-weight: 300;
+    max-width: 700px;
+    line-height: 1.4;
+  }
+  .s-title .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .s-title .stats {
+    display: flex;
+    gap: 64px;
+  }
+  .s-title .stat-item .num {
+    color: var(--teal);
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1;
+  }
+  .s-title .stat-item .lbl {
+    color: rgba(255,255,255,0.55);
+    font-size: var(--label);
+    font-weight: 400;
+    margin-top: 6px;
+  }
+  .s-title .date-tag {
+    color: rgba(255,255,255,0.4);
+    font-size: var(--label);
+    font-weight: 400;
+  }
+
+  /* ── SLIDE 2: Opportunity ── */
+  .s-opportunity {
+    background: var(--purple);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .slide-eyebrow {
+    color: rgba(255,255,255,0.5);
+    font-size: var(--label);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .slide-eyebrow.dark {
+    color: var(--purple);
+    opacity: 0.6;
+  }
+  .s-opportunity h2 {
+    color: white;
+    font-size: var(--title);
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin-bottom: 60px;
+  }
+  .opp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    flex: 1;
+  }
+  .opp-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .opp-card .big-num {
+    font-size: 80px;
+    font-weight: 900;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .opp-card .card-title {
+    color: white;
+    font-size: var(--body);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .opp-card .card-body {
+    color: rgba(255,255,255,0.7);
+    font-size: var(--small);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE 3: Why Refresh ── */
+  .s-why {
+    background: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-why h2 {
+    color: var(--purple-dark);
+    font-size: var(--title);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 56px;
+    max-width: 900px;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    flex: 1;
+  }
+  .why-card {
+    background: white;
+    border-radius: 16px;
+    padding: 44px 44px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .why-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--purple-pale);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .why-icon svg { width: 28px; height: 28px; }
+  .why-card h3 {
+    color: var(--purple-dark);
+    font-size: var(--body);
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .why-card p {
+    color: var(--mid-gray);
+    font-size: var(--small);
+    line-height: 1.55;
+  }
+
+  /* ── SLIDE 4: Sign Categories ── */
+  .s-categories {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-categories h2 {
+    color: white;
+    font-size: var(--title);
+    font-weight: 900;
+    margin-bottom: 52px;
+    max-width: 800px;
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    flex: 1;
+  }
+  .cat-card {
+    border-radius: 14px;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cat-card.primary {
+    background: var(--purple);
+  }
+  .cat-card.secondary {
+    background: rgba(255,255,255,0.07);
+  }
+  .cat-card.highlight {
+    background: var(--teal);
+  }
+  .cat-badge {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+  .cat-badge.required {
+    background: rgba(255,255,255,0.2);
+    color: white;
+  }
+  .cat-badge.optional {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+  }
+  .cat-name {
+    color: white;
+    font-size: var(--small);
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  /* ── SLIDE 5: 2026 Refresh Package ── */
+  .s-refresh {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100%;
+  }
+  .s-refresh .left {
+    background: var(--purple-pale);
+    padding: var(--pad-y) var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .s-refresh .left h2 {
+    color: var(--purple-dark);
+    font-size: var(--title);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+  .s-refresh .left p {
+    color: var(--mid-gray);
+    font-size: var(--body);
+    line-height: 1.55;
+    max-width: 560px;
+  }
+  .s-refresh .right {
+    padding: var(--pad-y) var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+  .refresh-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 28px 32px;
+    background: var(--warm-gray);
+    border-radius: 14px;
+  }
+  .refresh-item .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--purple);
+    flex-shrink: 0;
+  }
+  .refresh-item .item-name {
+    font-size: var(--body);
+    font-weight: 700;
+    color: var(--text);
+  }
+  .refresh-item .item-desc {
+    font-size: var(--small);
+    color: var(--mid-gray);
+    margin-left: auto;
+  }
+
+  /* ── SLIDE 6: Rollout Timeline ── */
+  .s-timeline {
+    background: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-timeline h2 {
+    color: var(--purple-dark);
+    font-size: var(--title);
+    font-weight: 900;
+    margin-bottom: 64px;
+  }
+  .timeline {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    align-items: flex-start;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 38px;
+    left: 38px;
+    right: 38px;
+    height: 4px;
+    background: var(--purple-pale);
+    z-index: 0;
+  }
+  .tl-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .tl-dot {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 900;
+    color: white;
+  }
+  .tl-dot.done { background: var(--teal); }
+  .tl-dot.active { background: var(--purple); }
+  .tl-dot.upcoming { background: rgba(123,45,139,0.25); color: var(--purple); }
+  .tl-content {
+    text-align: center;
+    max-width: 220px;
+  }
+  .tl-phase {
+    font-size: var(--small);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+    margin-bottom: 8px;
+  }
+  .tl-title {
+    font-size: var(--body);
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .tl-desc {
+    font-size: var(--small);
+    color: var(--mid-gray);
+    line-height: 1.45;
+  }
+
+  /* ── SLIDE 7: How to Order ── */
+  .s-order {
+    background: var(--purple-dark);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-order h2 {
+    color: white;
+    font-size: var(--title);
+    font-weight: 900;
+    margin-bottom: 60px;
+  }
+  .order-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    flex: 1;
+  }
+  .order-step {
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 44px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+  }
+  .order-step h3 {
+    color: white;
+    font-size: var(--body);
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .order-step p {
+    color: rgba(255,255,255,0.6);
+    font-size: var(--small);
+    line-height: 1.5;
+  }
+  .order-url {
+    margin-top: 48px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px 36px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .order-url .url-label {
+    color: rgba(255,255,255,0.5);
+    font-size: var(--small);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .order-url .url-text {
+    color: var(--teal);
+    font-size: var(--body);
+    font-weight: 700;
+  }
+
+  /* ── SLIDE 8: FASTSIGNS ── */
+  .s-fastsigns {
+    background: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .s-fastsigns .left {
+    background: var(--dark);
+    padding: var(--pad-y) var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .s-fastsigns .left .logo-wrap {
+    background: white;
+    display: inline-block;
+    padding: 20px 36px;
+    border-radius: 12px;
+  }
+  .s-fastsigns .left .logo-wrap img {
+    height: 56px;
+    width: auto;
+  }
+  .s-fastsigns .left h2 {
+    color: white;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .s-fastsigns .left p {
+    color: rgba(255,255,255,0.6);
+    font-size: var(--body);
+    line-height: 1.55;
+  }
+  .s-fastsigns .right {
+    padding: var(--pad-y) var(--pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+  .fs-stat-row {
+    display: flex;
+    gap: 32px;
+  }
+  .fs-stat {
+    flex: 1;
+    background: var(--warm-gray);
+    border-radius: 14px;
+    padding: 32px 28px;
+  }
+  .fs-stat .big {
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--purple);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .fs-stat .lbl {
+    font-size: var(--small);
+    color: var(--mid-gray);
+    line-height: 1.4;
+  }
+  .fs-bullet {
+    display: flex;
+    gap: 20px;
+    padding: 24px 28px;
+    background: var(--warm-gray);
+    border-radius: 14px;
+    align-items: flex-start;
+  }
+  .fs-bullet .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+    margin-top: 12px;
+  }
+  .fs-bullet .text {
+    font-size: var(--body);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  /* ── SLIDE 9: Investment ── */
+  .s-investment {
+    background: var(--teal);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-investment h2 {
+    color: white;
+    font-size: var(--title);
+    font-weight: 900;
+    margin-bottom: 56px;
+  }
+  .invest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    flex: 1;
+  }
+  .invest-card {
+    background: rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 48px 40px;
+  }
+  .invest-card .type {
+    font-size: var(--small);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 20px;
+  }
+  .invest-card .amount {
+    font-size: 68px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .invest-card .note {
+    font-size: var(--small);
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+    margin-top: 16px;
+  }
+  .invest-card.featured {
+    background: rgba(255,255,255,0.25);
+  }
+  .invest-disclaimer {
+    margin-top: 32px;
+    color: rgba(255,255,255,0.55);
+    font-size: var(--label);
+  }
+
+  /* ── SLIDE 10: Next Steps ── */
+  .s-nextsteps {
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    padding: var(--pad-y) var(--pad-x);
+  }
+  .s-nextsteps h2 {
+    color: white;
+    font-size: var(--title);
+    font-weight: 900;
+    margin-bottom: 60px;
+  }
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex: 1;
+    justify-content: center;
+  }
+  .ns-item {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding: 36px 40px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 16px;
+  }
+  .ns-num {
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--teal);
+    min-width: 60px;
+    line-height: 1;
+  }
+  .ns-content h3 {
+    color: white;
+    font-size: var(--body);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .ns-content p {
+    color: rgba(255,255,255,0.55);
+    font-size: var(--small);
+    line-height: 1.45;
+  }
+  .ns-owner {
+    margin-left: auto;
+    padding: 10px 24px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    color: rgba(255,255,255,0.5);
+    font-size: var(--label);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .bottom-close {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 40px;
+  }
+  .close-fs img {
+    height: 36px;
+    opacity: 0.5;
+    background: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+  .close-contact {
+    color: rgba(255,255,255,0.4);
+    font-size: var(--small);
+    text-align: right;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- SLIDE 1: Title -->
+  <section data-label="Title" class="s-title">
+    <div class="top-bar">
+      <div class="wayfair-wordmark">Wayfair</div>
+      <div class="fastsigns-badge">
+        <img src="uploads/fastsigns_logo-1776604457773.jpg" alt="FASTSIGNS">
+      </div>
+    </div>
+    <div class="hero">
+      <div class="eyebrow">Presented by FASTSIGNS</div>
+      <h1>2026 Signage<br>Refresh</h1>
+      <div class="subtitle">Unified brand standards across all<br>warehouse facilities — nationwide.</div>
+    </div>
+    <div class="bottom-row">
+      <div class="stats">
+        <div class="stat-item">
+          <div class="num">65</div>
+          <div class="lbl">Warehouse Locations</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">12</div>
+          <div class="lbl">Sign Categories</div>
+        </div>
+        <div class="stat-item">
+          <div class="num">2026</div>
+          <div class="lbl">Rollout Target</div>
+        </div>
+      </div>
+      <div class="date-tag">April 2026</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: The Opportunity -->
+  <section data-label="The Opportunity" class="s-opportunity">
+    <div class="slide-eyebrow">The Opportunity</div>
+    <h2>A refreshed brand deserves<br>consistent execution everywhere.</h2>
+    <div class="opp-grid">
+      <div class="opp-card">
+        <div class="big-num">65</div>
+        <div class="card-title">Facilities to Update</div>
+        <div class="card-body">Wayfair warehouse and distribution locations across the U.S. requiring updated signage aligned to the new brand identity.</div>
+      </div>
+      <div class="opp-card">
+        <div class="big-num">12</div>
+        <div class="card-title">Sign Categories</div>
+        <div class="card-body">From operational and safety signage to engagement, quality, and trailer yard — every category has been reviewed and refreshed.</div>
+      </div>
+      <div class="opp-card">
+        <div class="big-num">1</div>
+        <div class="card-title">Dedicated Platform</div>
+        <div class="card-body">A custom ordering portal built exclusively for Wayfair locations — streamlined, branded, and ready to deploy.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: Why Now -->
+  <section data-label="Why Now" class="s-why">
+    <div class="slide-eyebrow dark">Why the Refresh Matters</div>
+    <h2>Inconsistent signage creates<br>friction — on the floor and in the brand.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Brand Evolution</h3>
+          <p>Wayfair's brand identity has been updated. Existing signage across facilities reflects older visual standards and needs to be aligned.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Associate Experience</h3>
+          <p>Clear, modern signage improves wayfinding, safety compliance, and the daily experience for tens of thousands of warehouse associates.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Operational Clarity</h3>
+          <p>Standardized signs across all 65 locations reduce training time, improve safety outcomes, and ensure consistent operational communication.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7B2D8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <div>
+          <h3>Customer Confidence</h3>
+          <p>A professionally branded environment reinforces Wayfair's reputation with visiting vendors, partners, and customers at physical locations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: Sign Categories -->
+  <section data-label="Sign Categories" class="s-categories">
+    <div class="slide-eyebrow" style="color:rgba(255,255,255,0.5)">Full Scope</div>
+    <h2>12 sign categories.<br>Every corner of the facility covered.</h2>
+    <div class="cat-grid">
+      <div class="cat-card primary">
+        <div class="cat-badge required">Required</div>
+        <div class="cat-name">2026 Signage Refresh</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Engagement</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Deluxing</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Quality Signs</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Waycademy Signs</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">HDO Standard Signs</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Physical Retail – SRB</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Operations</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Parking Lot Signs</div>
+      </div>
+      <div class="cat-card highlight">
+        <div class="cat-badge required">Required</div>
+        <div class="cat-name">Safety Signs</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Security</div>
+      </div>
+      <div class="cat-card secondary">
+        <div class="cat-badge optional">Optional</div>
+        <div class="cat-name">Trailer Yard Signs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: 2026 Refresh Package -->
+  <section data-label="2026 Refresh Package" class="s-refresh">
+    <div class="left">
+      <div class="slide-eyebrow dark" style="color:var(--purple);opacity:0.6;font-size:22px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:32px">2026 Refresh Package</div>
+      <h2>The core package every location must order.</h2>
+      <p style="margin-top:28px">The 2026 Signage Refresh package includes every sign required to bring a Wayfair facility into alignment with the updated brand standards. Designed for quick installation across all facility types.</p>
+      <div style="margin-top:40px;padding:28px 32px;background:white;border-radius:14px;display:inline-block">
+        <div style="font-size:22px;font-weight:700;color:var(--mid-gray);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px">Ordering Portal</div>
+        <div style="font-size:28px;font-weight:800;color:var(--purple)">fs2191-2.store.corebridge.net</div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="refresh-item">
+        <div class="dot"></div>
+        <div class="item-name">Interior Branding Signage</div>
+        <div class="item-desc">Updated logo & brand marks</div>
+      </div>
+      <div class="refresh-item">
+        <div class="dot"></div>
+        <div class="item-name">Wayfinding & Directional</div>
+        <div class="item-desc">Floor, aisle & zone markers</div>
+      </div>
+      <div class="refresh-item">
+        <div class="dot"></div>
+        <div class="item-name">Regulatory & Safety</div>
+        <div class="item-desc">Compliance-required signage</div>
+      </div>
+      <div class="refresh-item">
+        <div class="dot"></div>
+        <div class="item-name">Associate Engagement</div>
+        <div class="item-desc">Culture & motivation signage</div>
+      </div>
+      <div class="refresh-item">
+        <div class="dot"></div>
+        <div class="item-name">Exterior Identification</div>
+        <div class="item-desc">Facility entry & parking</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: Rollout Timeline -->
+  <section data-label="Rollout Timeline" class="s-timeline">
+    <div class="slide-eyebrow dark">Rollout Timeline</div>
+    <h2>Phased deployment across all 65 locations.</h2>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-dot done">✓</div>
+        <div class="tl-content">
+          <div class="tl-phase">Phase 1</div>
+          <div class="tl-title">Portal Launch</div>
+          <div class="tl-desc">Ordering platform live. Products catalogued and ready to order by location.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot active">2</div>
+        <div class="tl-content">
+          <div class="tl-phase">Phase 2 — Now</div>
+          <div class="tl-title">Needs Assessment</div>
+          <div class="tl-desc">Each facility completes the intake form to capture location-specific signage requirements.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot upcoming">3</div>
+        <div class="tl-content">
+          <div class="tl-phase">Phase 3</div>
+          <div class="tl-title">Order Fulfillment</div>
+          <div class="tl-desc">FASTSIGNS produces and ships customized signage packages to each facility.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot upcoming">4</div>
+        <div class="tl-content">
+          <div class="tl-phase">Phase 4</div>
+          <div class="tl-title">Installation</div>
+          <div class="tl-desc">Nationwide installation support available. Coordination handled by FASTSIGNS project team.</div>
+        </div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot upcoming">5</div>
+        <div class="tl-content">
+          <div class="tl-phase">Phase 5</div>
+          <div class="tl-title">Completion</div>
+          <div class="tl-desc">All 65 locations fully refreshed and compliant with the 2026 Wayfair brand standard.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: How to Order -->
+  <section data-label="How to Order" class="s-order">
+    <div class="slide-eyebrow" style="color:rgba(255,255,255,0.5)">Ordering Process</div>
+    <h2>Simple. Fast. Built for Wayfair.</h2>
+    <div class="order-steps">
+      <div class="order-step">
+        <div class="step-num">1</div>
+        <h3>Complete the Intake Form</h3>
+        <p>Each location submits their facility details, square footage, and specific signage needs via the online form.</p>
+      </div>
+      <div class="order-step">
+        <div class="step-num">2</div>
+        <h3>Review Your Package</h3>
+        <p>Log in to the dedicated Wayfair ordering portal to review recommended products for your location and facility type.</p>
+      </div>
+      <div class="order-step">
+        <div class="step-num">3</div>
+        <h3>Place Your Order</h3>
+        <p>Confirm quantities, add any additional category items, and submit. All pricing is pre-approved and contract-compliant.</p>
+      </div>
+      <div class="order-step">
+        <div class="step-num">4</div>
+        <h3>Receive &amp; Install</h3>
+        <p>Your signage ships directly to the facility. FASTSIGNS installation support is available nationwide.</p>
+      </div>
+    </div>
+    <div class="order-url">
+      <div class="url-label">Ordering Portal</div>
+      <div class="url-text">fs2191-2.store.corebridge.net</div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: FASTSIGNS Partnership -->
+  <section data-label="FASTSIGNS Partnership" class="s-fastsigns">
+    <div class="left">
+      <div class="logo-wrap">
+        <img src="uploads/fastsigns_logo-1776604457773.jpg" alt="FASTSIGNS">
+      </div>
+      <h2>Your nationwide signage partner.</h2>
+      <p>FASTSIGNS has built a dedicated program for Wayfair — from brand-compliant templates to nationwide production and installation capability.</p>
+    </div>
+    <div class="right">
+      <div class="fs-stat-row">
+        <div class="fs-stat">
+          <div class="big">700+</div>
+          <div class="lbl">Locations across North America</div>
+        </div>
+        <div class="fs-stat">
+          <div class="big">40+</div>
+          <div class="lbl">Years in the industry</div>
+        </div>
+      </div>
+      <div class="fs-bullet">
+        <div class="dot"></div>
+        <div class="text">Custom portal built exclusively for Wayfair — pre-approved products, brand-locked templates</div>
+      </div>
+      <div class="fs-bullet">
+        <div class="dot"></div>
+        <div class="text">Dedicated Wayfair account team for project coordination and support</div>
+      </div>
+      <div class="fs-bullet">
+        <div class="dot"></div>
+        <div class="text">Nationwide shipping & professional installation available at every location</div>
+      </div>
+      <div class="fs-bullet">
+        <div class="dot"></div>
+        <div class="text">Quality guarantee — every sign produced to Wayfair brand specification</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: Why Act Now -->
+  <section data-label="Why Act Now" class="s-investment" style="background:var(--purple)">
+    <div class="slide-eyebrow" style="color:rgba(255,255,255,0.5)">The Case for Action</div>
+    <h2>Every day of misaligned signage<br>is a missed brand moment.</h2>
+    <div class="invest-grid">
+      <div class="invest-card featured">
+        <div class="type">Brand Impact</div>
+        <div class="amount">65</div>
+        <div style="color:white;font-size:28px;font-weight:700">Facilities</div>
+        <div class="note">Each one an opportunity to reinforce the updated Wayfair brand with associates, visitors, and vendors every single day.</div>
+      </div>
+      <div class="invest-card">
+        <div class="type">Efficiency Gain</div>
+        <div class="amount" style="font-size:52px;margin-top:8px">One Portal</div>
+        <div class="note">All ordering, tracking, and fulfillment in a single system. No vendor juggling. No custom quotes per location.</div>
+      </div>
+      <div class="invest-card">
+        <div class="type">Deployment Speed</div>
+        <div class="amount">Fast</div>
+        <div class="note">With pre-approved products and a streamlined process, locations can be refreshed rapidly once orders are placed.</div>
+      </div>
+    </div>
+    <div class="invest-disclaimer">Pricing and lead times confirmed per location via the ordering portal.</div>
+  </section>
+
+  <!-- SLIDE 10: Next Steps -->
+  <section data-label="Next Steps" class="s-nextsteps">
+    <h2>Next Steps</h2>
+    <div class="steps-list">
+      <div class="ns-item">
+        <div class="ns-num">01</div>
+        <div class="ns-content">
+          <h3>Approve the Rollout Program</h3>
+          <p>Confirm scope, timeline, and rollout phasing with Wayfair facilities leadership.</p>
+        </div>
+        <div class="ns-owner">Wayfair Leadership</div>
+      </div>
+      <div class="ns-item">
+        <div class="ns-num">02</div>
+        <div class="ns-content">
+          <h3>Distribute Intake Forms to All 65 Locations</h3>
+          <p>Each facility manager completes the needs assessment form — takes under 10 minutes.</p>
+        </div>
+        <div class="ns-owner">FASTSIGNS</div>
+      </div>
+      <div class="ns-item">
+        <div class="ns-num">03</div>
+        <div class="ns-content">
+          <h3>Begin Phase 1 Orders</h3>
+          <p>Pilot with a subset of locations to validate the process before full rollout.</p>
+        </div>
+        <div class="ns-owner">Joint</div>
+      </div>
+      <div class="ns-item">
+        <div class="ns-num">04</div>
+        <div class="ns-content">
+          <h3>Full Deployment</h3>
+          <p>All 65 locations receive and install refreshed signage aligned to the 2026 Wayfair brand standard.</p>
+        </div>
+        <div class="ns-owner">FASTSIGNS</div>
+      </div>
+    </div>
+    <div class="bottom-close">
+      <div class="close-fs">
+        <img src="uploads/fastsigns_logo-1776604457773.jpg" alt="FASTSIGNS">
+      </div>
+      <div class="close-contact">
+        <div style="color:rgba(255,255,255,0.6);font-size:28px;font-weight:700">FASTSIGNS of Manchester, CT</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:22px;margin-top:6px">101 Hale Road, Manchester, CT 06040 &nbsp;·&nbsp; (860) 644-5700</div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+</body>
+</html>
